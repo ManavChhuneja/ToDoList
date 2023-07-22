@@ -16,7 +16,10 @@
 		<div class="list-container">
 			<ul>
 				<% if (locals.toDoList) { %> <% toDoList.forEach(element => { %>
-				<li><%= element %></li>
+				<div class="to-do-item">
+					<input type="checkbox" />
+					<li><%= element %></li>
+				</div>
 				<% }) %> <% } %>
 			</ul>
 		</div>
