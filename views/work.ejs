@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -9,24 +9,17 @@
       href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css"
     />
     <link rel="stylesheet" href="/styles/styles.css" />
-    <script src="/logic/index.js" defer></script>
     <title>To Do List Application</title>
   </head>
   <body>
-    <nav>
-      <ul>
-        <li><a href="#">Today</a></li>
-        <li><a href="#">Work</a></li>
-      </ul>
-    </nav>
     <h1><%= date %></h1>
-    <form method="post" action="/">
-      <input type="text" placeholder="Enter To Do Here" name="todo" required />
+    <form method="post" action="/work">
+      <input type="text" placeholder="Enter To Do Here" name="todo" />
       <button type="submit">+</button>
     </form>
     <div class="list-container">
       <ul>
-        <% if (locals.toDoList) { %> <% toDoList.forEach(element => { %>
+        <% if (locals.workList) { %> <% workList.forEach(element => { %>
         <div class="to-do-item">
           <li><input type="checkbox" /> <%= element %></li>
         </div>
