@@ -11,9 +11,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 app.get("/", (req, res) => {
-  toDoList = [];
   res.render("index.ejs", {
     date: dateToday,
+    toDoList: toDoList,
   });
 });
 
@@ -29,24 +29,23 @@ app.post("/", (req, res) => {
 
 ///////////////////////////////////////////// WORK ROUTE //////////////////////////////////////////////////
 
-// let workList = [];
-// app.get("/work", (req, res) => {
-//   workList = [];
+let workList = [];
+app.get("/work", (req, res) => {
+  res.render("work.ejs", {
+    date: dateToday,
+    workList: workList,
+  });
+});
 
-//   res.render("work.ejs", {
-//     date: dateToday,
-//   });
-// });
+app.post("/work", (req, res) => {
+  const workTodo = req.body.todo;
+  workList.push(workTodo);
 
-// app.post("/work", (req, res) => {
-//   const workTodo = req.body.todo;
-//   workList.push(workTodo);
-
-//   res.render("work.ejs", {
-//     workList: workList,
-//     date: dateToday,
-//   });
-// });
+  res.render("work.ejs", {
+    workList: workList,
+    date: dateToday,
+  });
+});
 
 app.listen(port, () => {
   console.log(`Server live on port ${port}`);

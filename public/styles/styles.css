@@ -1,7 +1,120 @@
+body {
+  margin: 0;
+  height: 100vh;
+  background: url("/images/flowers.png") no-repeat center center / cover;
+  backdrop-filter: blur(10px);
+  font-family: "Roboto Mono", sans-serif;
+  font-weight: 400;
+}
+
 .selected {
   text-decoration: line-through;
 }
 
-li {
-  list-style: none !important;
+li::marker {
+  content: "";
+}
+
+nav ul {
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
+}
+
+nav ul li,
+nav a {
+  margin: auto;
+  text-decoration: none;
+}
+
+.content-container,
+form {
+  width: 500px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+}
+
+.content-container {
+  height: 175px;
+  flex-direction: column;
+  margin-bottom: 70px;
+}
+
+form {
+  height: 60px;
+}
+
+input[type="text"],
+.to-do-item {
+  width: 500px;
+  height: 60px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.3);
+  font-size: 1.2rem;
+}
+
+input[type="text"] {
+  text-align: center;
+  padding: auto 20px;
+}
+
+button {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border-width: 0;
+  text-align: center;
+  margin-left: -60px;
+  background-color: #982176;
+  color: white;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+h1 {
+  margin-bottom: 5%;
+  font-size: 2rem;
+  border-radius: 30px;
+  padding: 10px 25px;
+  background-color: #3e001f;
+  color: white;
+  box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.3);
+  font-weight: 700;
+}
+
+.list-container {
+  width: 400px;
+  margin: auto;
+  padding: 0;
+}
+
+.list-container ul {
+  width: 398px;
+  padding: 0;
+}
+
+.to-do-item {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  background-color: #98217680;
+  color: white;
+  margin-bottom: 1px;
+  border-radius: 0;
+}
+
+.to-do-item:last-child:first-child {
+  border-radius: 5px;
+}
+
+.to-do-item:first-child {
+  border-radius: 5px 5px 0 0;
+}
+
+.to-do-item:last-child {
+  border-radius: 0 0 5px 5px;
 }
