@@ -9,6 +9,9 @@ let toDoList = [];
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
+const schedule = require("node-schedule");
+
+// Set a daily schedule to clear dataArray
 
 app.get("/", (req, res) => {
   res.render("index.ejs", {
@@ -49,4 +52,9 @@ app.post("/work", (req, res) => {
 
 app.listen(process.env.PORT || port, () => {
   console.log(`Server live on port ${port}`);
+});
+
+schedule.scheduleJob("0 0 * * *", function () {
+  toDoList = [];
+  workList = [];
 });
