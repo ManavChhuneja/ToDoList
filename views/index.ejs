@@ -19,37 +19,36 @@
     <title>To Do List Application</title>
   </head>
   <body>
-    <nav>
-      <ul>
-        <li>
-          <i class="fa-regular fa-calendar" style="color: #3e001f"></i
-          ><a href="/"> Today</a>
-        </li>
-        <li>
-          <i class="fa-solid fa-pen" style="color: #3e001f"></i
-          ><a href="/work"> Work</a>
-        </li>
-      </ul>
-    </nav>
     <div class="content-container">
-      <h1><%= date %></h1>
-      <form method="post" action="/">
+      <h1><%= listTitle %></h1>
+      <form method="post" action="/" class="item">
         <input
           type="text"
           placeholder="Enter To Do Here"
           name="todo"
           required
         />
-        <button type="submit">+</button>
+        <button type="submit" value="<%= listTitle %>" name="list">+</button>
       </form>
     </div>
 
     <div class="list-container">
       <ul>
         <% if (locals.toDoList) { %> <% toDoList.forEach(element => { %>
-        <div class="to-do-item">
-          <li><input type="checkbox" /> <%= element %></li>
-        </div>
+        <form action="/delete" method="post">
+          <div class="to-do-item">
+            <li>
+              <input
+                type="checkbox"
+                onchange="this.form.submit()"
+                name="checkbox"
+                value="<%=element._id%>"
+              />
+              <%= element.name %>
+            </li>
+          </div>
+          <input type="hidden" name="listName" value="<%= listTitle%>" />
+        </form>
         <% }) %> <% } %>
       </ul>
     </div>
