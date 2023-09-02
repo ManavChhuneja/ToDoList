@@ -1,13 +1,20 @@
 import express from "express";
 import mongoose from "mongoose";
 import _ from "lodash";
+import { config } from "dotenv";
+config();
 
 const app = express();
 const port = 3000;
 // let toDoList = ["To Do Item"];
+const username = encodeURIComponent(process.env.MONGODB_USERNAME);
+const password = encodeURIComponent(process.env.MONGODB_PASSWORD);
+const cluster = process.env.MONGODB_CLUSTER;
 
 ///////////////////////////////////////////////////// Adding Database //////////////////////////////////////////////////
-mongoose.connect("mongodb://localhost:27017/todolistDB");
+mongoose.connect(
+  `mongodb+srv://${username}:${password}@${cluster}.w0e6wql.mongodb.net/todolistDB`
+);
 
 const itemsSchema = new mongoose.Schema({
   name: String,
